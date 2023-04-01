@@ -1,3 +1,1 @@
 # Africa
-
-Development Branch

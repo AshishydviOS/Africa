@@ -17,13 +17,19 @@ struct ContentView: View {
             List {
                 CoverImageView()
                     .frame(height: 300)
-                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
-                    
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .padding(.bottom, 8)
                 
                 ForEach(animals) { item in
-                    AnimalListItemView(animal: item)
-                        .padding(.vertical, 8)
-                        .listRowSeparator(Visibility.hidden)
+                    NavigationLink {
+                        //Destination
+                        AnimalDetailView(animal: item)
+                    } label: {
+                        //Label
+                        AnimalListItemView(animal: item)
+                            .padding(.vertical, 8)
+                            .listRowSeparator(Visibility.hidden)
+                    }
                 }
             }
             .navigationTitle("Africa")
@@ -36,6 +42,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
     }
 }
